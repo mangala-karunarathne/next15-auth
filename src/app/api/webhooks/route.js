@@ -1,4 +1,4 @@
-import { verifyWebhook } from "@clerk/nextjs/webhooks";
+import  {verifyWebhook}  from "@clerk/nextjs/webhooks";
 
 export async function POST(req) {
   try {
