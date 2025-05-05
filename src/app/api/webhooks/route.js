@@ -1,4 +1,4 @@
-import { createdOrUpdatedUser } from "@/app/lib/actions/user";
+import { createdOrUpdatedUser, deleteUser } from "@/app/lib/actions/user";
 import { verifyWebhook } from "@clerk/nextjs/webhooks";
 
 export async function POST(req) {
@@ -15,7 +15,7 @@ export async function POST(req) {
     console.log("Webhook payload:", evt?.data);
 
     if (eventType === "user.created" || eventType === "user.updated") {
-      const { id, first_name, last_name, image_url, email_addresses } =
+      const { id, first_name, last_name, image_url, email_addresses, username } =
         evt?.data;
       try {
         await createdOrUpdatedUser(
